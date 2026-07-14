@@ -1,0 +1,33 @@
+services:
+  flutter-dev:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        FLUTTER_HOME: ${FLUTTER_HOME:-/home/vscode/flutter}
+        ANDROID_HOME: ${ANDROID_HOME:-/home/vscode/android-sdk}
+    env_file:
+      - .devcontainer/.env
+    privileged: true
+    volumes:
+      # USB devices for Android debugging (from devcontainer.json runArgs)
+      - /dev/bus/usb/:/dev/bus/usb
+      # Code workspace
+      - ./workspace:/workspace
+      # Caches based on devcontainer.json mounts
+      - ./.dev-caches/.pub-cache:/home/vscode/.pub-cache
+      - ./.dev-caches/.gradle:/home/vscode/.gradle
+      - ./.dev-caches/.android:/home/vscode/.android
+      # for Flutter SDK and Android SDK, if you want to persist them outside the container
+      - ./flutter-sdk:${FLUTTER_HOME:-/home/vscode/flutter}
+      - ./android-sdk:${ANDROID_HOME:-/home/vscode/android-sdk}
+    ports:
+      # Forwarded ports from devcontainer.json
+      - "8080:8080"
+      - "5555:5555"
+    user: vscode
+    working_dir: /workspace
+    # Keep the container running
+    tty: true
+    stdin_open: true
+    command: /bin/bash -c "while sleep 1000; do :; done"

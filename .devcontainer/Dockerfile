@@ -2,14 +2,21 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
 # Set environment variables for Android and Flutter
-ENV FLUTTER_HOME=/opt/flutter \
-    ANDROID_HOME=/opt/android-sdk \
-    PATH=${PATH}:/opt/flutter/bin:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools
+ARG FLUTTER_HOME=/home/vscode/flutter
+ARG ANDROID_HOME=/home/vscode/android-sdk
+
+ENV FLUTTER_HOME=${FLUTTER_HOME} \
+    ANDROID_HOME=${ANDROID_HOME} \
+    PATH=${PATH}:${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
 
 # Install dependencies, Java 17, and basic tools
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y curl git unzip xz-utils zip libglu1-mesa openjdk-17-jdk wget \
+RUN apt update && export DEBIAN_FRONTEND=noninteractive \
+    && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-17-jdk wget \
     && rm -rf /var/lib/apt/lists/*
+
+# Switch to the non-root user provided by the base image
+USER vscode
+WORKDIR /home/vscode/workspace
 
 # Install Android SDK Command-line Tools
 RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
@@ -24,13 +31,6 @@ RUN yes | sdkmanager --licenses && \
 
 # Install Flutter SDK (Stable channel)
 RUN git clone https://github.com/flutter/flutter.git -b stable ${FLUTTER_HOME}
-
-# Fix permissions so the default 'vscode' user can access the SDKs
-RUN chown -R vscode:vscode ${FLUTTER_HOME} ${ANDROID_HOME}
-
-# Switch to the non-root user provided by the base image
-USER vscode
-WORKDIR /workspace
 
 # Disable analytics and precache Flutter artifacts
 RUN flutter config --no-analytics && \
