@@ -34,7 +34,7 @@ If you prefer not to use the Dev Containers extension or want to run the environ
 
 ## Configuration
 
-Environment variables for `FLUTTER_HOME` and `ANDROID_HOME` are dynamically loaded. You can modify these paths by editing the `.devcontainer/.env` file:
+Environment variables for `FLUTTER_HOME` and `ANDROID_HOME` are dynamically loaded. You can modify these paths by editing the `.env` file:
 ```env
 FLUTTER_HOME=/home/vscode/flutter
 ANDROID_HOME=/home/vscode/android-sdk
@@ -42,5 +42,5 @@ ANDROID_HOME=/home/vscode/android-sdk
 
 If you are using Docker Compose and want these build arguments to be strictly applied during the image build, run the build command with the env file:
 ```bash
-docker-compose --env-file .devcontainer/.env up -d --build
+docker-compose -d --build
 ```

@@ -7,7 +7,7 @@ services:
         FLUTTER_HOME: ${FLUTTER_HOME:-/home/vscode/flutter}
         ANDROID_HOME: ${ANDROID_HOME:-/home/vscode/android-sdk}
     env_file:
-      - .devcontainer/.env
+      - .env
     privileged: true
     volumes:
       # USB devices for Android debugging (from devcontainer.json runArgs)
