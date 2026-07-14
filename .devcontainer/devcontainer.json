@@ -1,0 +1,39 @@
+{
+  "name": "Flutter Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    "--privileged",
+    "-v", "/dev/bus/usb/:/dev/bus/usb"
+  ],
+  "initializeCommand": "mkdir -p .dev-caches/.pub-cache .dev-caches/.gradle .dev-caches/.android",
+  "mounts": [
+    "source=${localWorkspaceFolder}/.dev-caches/.pub-cache,target=/home/vscode/.pub-cache,type=bind",
+    "source=${localWorkspaceFolder}/.dev-caches/.gradle,target=/home/vscode/.gradle,type=bind",
+    "source=${localWorkspaceFolder}/.dev-caches/.android,target=/home/vscode/.android,type=bind"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "dart.flutterSdkPath": "/opt/flutter",
+        "files.exclude": {
+          "**/.dev-caches": true
+        },
+        "files.watcherExclude": {
+          "**/.dev-caches/**": true
+        },
+        "search.exclude": {
+          "**/.dev-caches/**": true
+        }
+      },
+      "extensions": [
+        "dart-code.flutter",
+        "dart-code.dart-code"
+      ]
+    }
+  },
+  "forwardPorts": [8080, 5555],
+  "postCreateCommand": "flutter doctor",
+  "remoteUser": "vscode"
+}

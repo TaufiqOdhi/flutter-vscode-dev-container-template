@@ -1,0 +1,2 @@
+# Ignore local Docker Dev Container caches
+.dev-caches/
