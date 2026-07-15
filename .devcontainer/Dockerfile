@@ -1,13 +1,10 @@
 # Use the official Microsoft Ubuntu base image
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
-# Set environment variables for Android and Flutter
-ARG FLUTTER_HOME=/home/vscode/flutter
-ARG ANDROID_HOME=/home/vscode/android-sdk
-
-ENV FLUTTER_HOME=${FLUTTER_HOME} \
-    ANDROID_HOME=${ANDROID_HOME} \
-    PATH=${PATH}:${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
+ENV USER_HOME=${USER_HOME:-/home/vscode} \
+    FLUTTER_HOME=${FLUTTER_HOME:-${USER_HOME}/flutter} \
+    ANDROID_HOME=${ANDROID_HOME:-${USER_HOME}/android-sdk} \
+    PATH=${PATH}:${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${USER_HOME}/.local/bin
 
 # Install dependencies, Java 17, and basic tools
 RUN apt update && export DEBIAN_FRONTEND=noninteractive \
@@ -16,4 +13,4 @@ RUN apt update && export DEBIAN_FRONTEND=noninteractive \
 
 # Switch to the non-root user provided by the base image
 USER vscode
-WORKDIR /home/vscode/workspace
+WORKDIR ${USER_HOME}/workspace

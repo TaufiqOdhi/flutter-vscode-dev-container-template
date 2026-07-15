@@ -7,13 +7,16 @@
     "--privileged",
     "-v", "/dev/bus/usb/:/dev/bus/usb"
   ],
-  "initializeCommand": "mkdir -p .dev-caches/.pub-cache .dev-caches/.gradle .dev-caches/.android android-sdk flutter-sdk",
+  "initializeCommand": "mkdir -p .dev-caches/.pub-cache .dev-caches/.gradle .dev-caches/.android android-sdk flutter-sdk antigravity-sdk .local/",
   "mounts": [
     "source=${localWorkspaceFolder}/.dev-caches/.pub-cache,target=/home/vscode/.pub-cache,type=bind",
     "source=${localWorkspaceFolder}/.dev-caches/.gradle,target=/home/vscode/.gradle,type=bind",
     "source=${localWorkspaceFolder}/.dev-caches/.android,target=/home/vscode/.android,type=bind",
     "source=${localWorkspaceFolder}/android-sdk,target=/home/vscode/android-sdk,type=bind",
-    "source=${localWorkspaceFolder}/flutter-sdk,target=/home/vscode/flutter,type=bind"
+    "source=${localWorkspaceFolder}/flutter-sdk,target=/home/vscode/flutter,type=bind",
+    "source=${localWorkspaceFolder}/antigravity-sdk,target=/home/vscode/.gemini,type=bind",
+    "source=${localWorkspaceFolder}/.local,target=/home/vscode/.local,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
   ],
   "customizations": {
     "vscode": {
@@ -31,7 +34,8 @@
       },
       "extensions": [
         "dart-code.flutter",
-        "dart-code.dart-code"
+        "dart-code.dart-code",
+        "ms-azuretools.vscode-containers"
       ]
     }
   },

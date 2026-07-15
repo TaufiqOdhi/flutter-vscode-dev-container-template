@@ -3,9 +3,6 @@ services:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
-      args:
-        FLUTTER_HOME: ${FLUTTER_HOME:-/home/vscode/flutter}
-        ANDROID_HOME: ${ANDROID_HOME:-/home/vscode/android-sdk}
     env_file:
       - .env
     privileged: true
@@ -13,20 +10,25 @@ services:
       # USB devices for Android debugging (from devcontainer.json runArgs)
       - /dev/bus/usb/:/dev/bus/usb
       # Code workspace
-      - ./workspace:/home/vscode/workspace
+      - ./workspace:${USER_HOME}/workspace
       # Caches based on devcontainer.json mounts
-      - ./.dev-caches/.pub-cache:/home/vscode/.pub-cache
-      - ./.dev-caches/.gradle:/home/vscode/.gradle
-      - ./.dev-caches/.android:/home/vscode/.android
+      - ./.dev-caches/.pub-cache:${USER_HOME}/.pub-cache
+      - ./.dev-caches/.gradle:${USER_HOME}/.gradle
+      - ./.dev-caches/.android:${USER_HOME}/.android
       # for Flutter SDK and Android SDK, if you want to persist them outside the container
-      - ./flutter-sdk:${FLUTTER_HOME:-/home/vscode/flutter}
-      - ./android-sdk:${ANDROID_HOME:-/home/vscode/android-sdk}
+      - ./flutter-sdk:${FLUTTER_HOME}/flutter}
+      - ./android-sdk:${ANDROID_HOME}/android-sdk}
+      # for ssh keys, git credentials, etc.
+      - ~/.ssh:${USER_HOME}/.ssh
+      # for Antigravity CLI
+      - ./antigravity-sdk:${USER_HOME}/.gemini
+      - .local/:${USER_HOME}/.local
     ports:
       # Forwarded ports from devcontainer.json
       - "8080:8080"
       - "5555:5555"
     user: vscode
-    working_dir: /home/vscode/workspace
+    working_dir: ${USER_HOME}/workspace
     # Keep the container running
     tty: true
     stdin_open: true
