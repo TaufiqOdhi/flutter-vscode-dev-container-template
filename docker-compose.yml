@@ -5,6 +5,8 @@ services:
       dockerfile: .devcontainer/Dockerfile
     env_file:
       - .env
+    environment:
+      - PATH=${PATH}:${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
     privileged: true
     volumes:
       # USB devices for Android debugging (from devcontainer.json runArgs)
@@ -16,8 +18,8 @@ services:
       - ./.dev-caches/.gradle:${USER_HOME}/.gradle
       - ./.dev-caches/.android:${USER_HOME}/.android
       # for Flutter SDK and Android SDK, if you want to persist them outside the container
-      - ./flutter-sdk:${FLUTTER_HOME}/flutter}
-      - ./android-sdk:${ANDROID_HOME}/android-sdk}
+      - ./flutter-sdk:${FLUTTER_HOME}
+      - ./android-sdk:${ANDROID_HOME}
       # for ssh keys, git credentials, etc.
       - ~/.ssh:${USER_HOME}/.ssh
       # for Antigravity CLI
