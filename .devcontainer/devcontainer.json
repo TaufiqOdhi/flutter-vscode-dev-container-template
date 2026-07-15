@@ -7,8 +7,15 @@
     "--privileged",
     "-v", "/dev/bus/usb/:/dev/bus/usb"
   ],
-  "initializeCommand": "mkdir -p .dev-caches/.pub-cache .dev-caches/.gradle .dev-caches/.android android-sdk flutter-sdk antigravity-sdk .local/",
+  "remoteEnv": {
+    "USER_HOME": "/home/vscode",
+    "FLUTTER_HOME": "/home/vscode/flutter",
+    "ANDROID_HOME": "/home/vscode/android-sdk",
+    "PATH": "${containerEnv:PATH}:/home/vscode/flutter/bin:/home/vscode/android-sdk/cmdline-tools/latest/bin:/home/vscode/android-sdk/platform-tools"
+  },
+  "initializeCommand": "mkdir -p .dev-caches/.pub-cache .dev-caches/.gradle .dev-caches/.android android-sdk flutter-sdk antigravity-sdk .local/ workspace",
   "mounts": [
+    "source=${localWorkspaceFolder}/workspace,target=/home/vscode/workspace,type=bind",
     "source=${localWorkspaceFolder}/.dev-caches/.pub-cache,target=/home/vscode/.pub-cache,type=bind",
     "source=${localWorkspaceFolder}/.dev-caches/.gradle,target=/home/vscode/.gradle,type=bind",
     "source=${localWorkspaceFolder}/.dev-caches/.android,target=/home/vscode/.android,type=bind",
