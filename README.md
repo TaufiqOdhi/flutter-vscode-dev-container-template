@@ -26,8 +26,28 @@ If you prefer not to use the Dev Containers extension or want to run the environ
    ```bash
    docker-compose exec flutter-dev /bin/bash
    ```
-3. You can create or manage your Flutter project from inside the container, and all changes will be reflected in your local `workspace/` directory.
-4. To stop the container, run:
+3. Install Android SDK Command-line Tools, inside running container:
+   ```
+   mkdir -p ${ANDROID_HOME}/cmdline-tools && \
+    wget -q https://dl.google.com/android/repository/commandlinetools-linux-11479570_latest.zip -O /tmp/cmdline-tools.zip && \
+    unzip -q /tmp/cmdline-tools.zip -d ${ANDROID_HOME}/cmdline-tools && \
+    mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest && \
+    rm /tmp/cmdline-tools.zip
+   ```
+4. install necessary platform-tools, platforms, build-tools, inside running container according to development requirement, example:
+   ```
+   sdkmanager "platform-tools" "platforms;android-36" "build-tools;28.0.3" "ndk;25.1.8937393" "cmake;3.22.1"
+   ```
+5. Install Flutter SDK (Stable channel), inside running container:
+   ```
+   cd ${FLUTTER_HOME} && \
+   git init && \
+   git remote add origin https://github.com/flutter/flutter.git && \
+   git fetch && \
+   git checkout stable
+   ```
+6. You can create or manage your Flutter project from inside the container, and all changes will be reflected in your local `workspace/` directory.
+7. To stop the container, run:
    ```bash
    docker-compose down
    ```

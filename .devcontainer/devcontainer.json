@@ -7,16 +7,18 @@
     "--privileged",
     "-v", "/dev/bus/usb/:/dev/bus/usb"
   ],
-  "initializeCommand": "mkdir -p .dev-caches/.pub-cache .dev-caches/.gradle .dev-caches/.android",
+  "initializeCommand": "mkdir -p .dev-caches/.pub-cache .dev-caches/.gradle .dev-caches/.android android-sdk flutter-sdk",
   "mounts": [
     "source=${localWorkspaceFolder}/.dev-caches/.pub-cache,target=/home/vscode/.pub-cache,type=bind",
     "source=${localWorkspaceFolder}/.dev-caches/.gradle,target=/home/vscode/.gradle,type=bind",
-    "source=${localWorkspaceFolder}/.dev-caches/.android,target=/home/vscode/.android,type=bind"
+    "source=${localWorkspaceFolder}/.dev-caches/.android,target=/home/vscode/.android,type=bind",
+    "source=${localWorkspaceFolder}/android-sdk,target=/home/vscode/android-sdk,type=bind",
+    "source=${localWorkspaceFolder}/flutter-sdk,target=/home/vscode/flutter,type=bind"
   ],
   "customizations": {
     "vscode": {
       "settings": {
-        "dart.flutterSdkPath": "/opt/flutter",
+        "dart.flutterSdkPath": "/home/vscode/flutter",
         "files.exclude": {
           "**/.dev-caches": true
         },
@@ -34,6 +36,5 @@
     }
   },
   "forwardPorts": [8080, 5555],
-  "postCreateCommand": "flutter doctor",
   "remoteUser": "vscode"
 }

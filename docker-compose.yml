@@ -13,7 +13,7 @@ services:
       # USB devices for Android debugging (from devcontainer.json runArgs)
       - /dev/bus/usb/:/dev/bus/usb
       # Code workspace
-      - ./workspace:/workspace
+      - ./workspace:/home/vscode/workspace
       # Caches based on devcontainer.json mounts
       - ./.dev-caches/.pub-cache:/home/vscode/.pub-cache
       - ./.dev-caches/.gradle:/home/vscode/.gradle
@@ -26,7 +26,7 @@ services:
       - "8080:8080"
       - "5555:5555"
     user: vscode
-    working_dir: /workspace
+    working_dir: /home/vscode/workspace
     # Keep the container running
     tty: true
     stdin_open: true
