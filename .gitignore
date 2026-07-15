@@ -1,9 +1,6 @@
 # Ignore local Docker Dev Container caches
 .dev-caches/
 .env
-workspace/*
-!workspace/
-android-sdk/*
-!android-sdk/
-flutter-sdk/*
-!flutter-sdk/
+workspace/
+android-sdk/
+flutter-sdk/
