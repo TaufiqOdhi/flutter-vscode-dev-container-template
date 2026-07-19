@@ -25,6 +25,8 @@ services:
       # for Antigravity CLI
       - ./antigravity-sdk:${USER_HOME}/.gemini
       - .local/:${USER_HOME}/.local
+      # for Git config
+      - ${HOME}/.gitconfig:${USER_HOME}/.gitconfig
     ports:
       # Forwarded ports from devcontainer.json
       - "8080:8080"
