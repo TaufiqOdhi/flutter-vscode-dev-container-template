@@ -8,4 +8,9 @@ RUN apt update && export DEBIAN_FRONTEND=noninteractive \
 
 # Switch to the non-root user provided by the base image
 USER vscode
+
+# install npm and vercel cli
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+RUN bash -c "source ~/.nvm/nvm.sh && nvm install --lts && npm install -g vercel"
+
 WORKDIR /home/vscode
