@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="TrvKl7wPlwWul8xmLwyJ">
+    <mxGraphModel dx="975" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-3" parent="1" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.azure.computer" value="User Device" vertex="1">
+          <mxGeometry height="72" width="80" x="120" y="514" as="geometry" />
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-4" parent="1" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.desktop_pc;" value="Server PC" vertex="1">
+          <mxGeometry height="160" width="110" x="620" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-9" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="140" width="126.10000000000002" x="362" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-5" parent="lP_6ns4FQLDEb-_PB8aM-9" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ccn_cloud_connect_network;" value="" vertex="1">
+          <mxGeometry height="103.17" width="126.1" as="geometry" />
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-8" parent="lP_6ns4FQLDEb-_PB8aM-9" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Network/Proxy/VPN" vertex="1">
+          <mxGeometry height="30" width="105" x="10.550000000000011" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-10" parent="1" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.smartphone;" value="" vertex="1">
+          <mxGeometry height="100" width="59" x="130.5" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-11" edge="1" parent="1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.205;entryY=0.451;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="189.5" y="405.14011057689163" as="sourcePoint" />
+            <mxPoint x="387.8505" y="419.5296700000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-12" edge="1" parent="1" source="lP_6ns4FQLDEb-_PB8aM-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.271;entryY=0.838;entryDx=0;entryDy=0;entryPerimeter=0;" target="lP_6ns4FQLDEb-_PB8aM-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-14" edge="1" parent="1" source="lP_6ns4FQLDEb-_PB8aM-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" target="lP_6ns4FQLDEb-_PB8aM-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
