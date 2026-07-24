@@ -19,7 +19,7 @@
         <mxCell id="lP_6ns4FQLDEb-_PB8aM-8" parent="lP_6ns4FQLDEb-_PB8aM-9" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Network/Proxy/VPN" vertex="1">
           <mxGeometry height="30" width="105" x="10.550000000000011" y="110" as="geometry" />
         </mxCell>
-        <mxCell id="lP_6ns4FQLDEb-_PB8aM-10" parent="1" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.smartphone;" value="" vertex="1">
+        <mxCell id="lP_6ns4FQLDEb-_PB8aM-10" parent="1" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.smartphone;" value="Smartphone" vertex="1">
           <mxGeometry height="100" width="59" x="130.5" y="350" as="geometry" />
         </mxCell>
         <mxCell id="lP_6ns4FQLDEb-_PB8aM-11" edge="1" parent="1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.205;entryY=0.451;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;">
