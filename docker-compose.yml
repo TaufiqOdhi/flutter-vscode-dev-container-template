@@ -1,5 +1,6 @@
 services:
   flutter-dev:
+    container_name: flutter-dev-container
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
