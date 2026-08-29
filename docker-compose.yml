@@ -3,7 +3,7 @@ services:
     container_name: flutter-dev-container
     build:
       context: .
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: Dockerfile
     env_file:
       - .env
     environment:
@@ -28,13 +28,16 @@ services:
       - .local/:${USER_HOME}/.local
       # for Git config
       - ${HOME}/.gitconfig:${USER_HOME}/.gitconfig
+      # for vscode server config
+      - ./vscode-config:${USER_HOME}/.config/code-server
     ports:
       # Forwarded ports from devcontainer.json
       - "8080:8080"
       - "5555:5555"
+      - "8000:8000"
     user: vscode
     working_dir: ${USER_HOME}/workspace
     # Keep the container running
     tty: true
     stdin_open: true
-    command: /bin/bash -c "while sleep 1000; do :; done"
+    command: /bin/bash -c "code-server --bind-addr 0.0.0.0:8000 --auth none"
