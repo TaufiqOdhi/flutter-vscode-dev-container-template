@@ -72,3 +72,37 @@ Install the Antigravity CLI using these command inside running container:
 ```
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
+
+### Codex CLI
+
+For Docker Compose, create the persistent directories on the host before starting or recreating the container:
+
+```bash
+mkdir -p codex-sdk .local
+docker-compose up -d --build flutter-dev
+docker-compose exec flutter-dev /bin/bash
+```
+
+Inside the container, load the existing Node.js installation and install Codex CLI into the mounted `.local` directory:
+
+```bash
+source "$HOME/.nvm/nvm.sh"
+npm install --global --prefix "$HOME/.local" @openai/codex@latest
+codex --version
+```
+
+Repeat the npm command to update Codex CLI. Docker Compose adds `$HOME/.local/bin` to `PATH`, and the existing `.local/` mount preserves the installation when the container is recreated.
+
+Sign in using device-code authentication, then open your project and start Codex:
+
+```bash
+codex login --device-auth
+cd "$HOME/workspace/<your-project>"
+codex
+```
+
+Enable device-code login in your ChatGPT security settings or workspace permissions if needed. Open the link printed by the CLI in your host browser and enter the one-time code.
+
+The `codex-sdk/` directory is mounted at `$HOME/.codex` to persist configuration, file-based login credentials, and session history. It is excluded from Git.
+
+See the official [Codex CLI documentation](https://developers.openai.com/codex/cli/) and [authentication guide](https://developers.openai.com/codex/auth/) for more details.

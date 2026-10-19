@@ -7,7 +7,7 @@ services:
     env_file:
       - .env
     environment:
-      - PATH=${PATH}:${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
+      - PATH=${PATH}:${FLUTTER_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${USER_HOME}/.local/bin
     privileged: true
     volumes:
       # USB devices for Android debugging (from devcontainer.json runArgs)
@@ -26,6 +26,8 @@ services:
       # for Antigravity CLI
       - ./antigravity-sdk:${USER_HOME}/.gemini
       - .local/:${USER_HOME}/.local
+      # for Codex CLI configuration, credentials, and session history
+      - ./codex-sdk:${USER_HOME}/.codex
       # for Git config
       - ${HOME}/.gitconfig:${USER_HOME}/.gitconfig
       # for vscode server config
