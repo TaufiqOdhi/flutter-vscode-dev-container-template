@@ -86,8 +86,7 @@ docker-compose exec flutter-dev /bin/bash
 Inside the container, load the existing Node.js installation and install Codex CLI into the mounted `.local` directory:
 
 ```bash
-source "$HOME/.nvm/nvm.sh"
-npm install --global --prefix "$HOME/.local" @openai/codex@latest
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
 codex --version
 ```
 
