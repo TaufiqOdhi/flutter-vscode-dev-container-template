@@ -1,5 +1,6 @@
 services:
   flutter-dev:
+    image: ghcr.io/taufiqodhi/flutter-vscode-dev-container-template
     container_name: flutter-dev-container
     build:
       context: .
