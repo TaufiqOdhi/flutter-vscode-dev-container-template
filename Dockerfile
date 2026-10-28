@@ -1,5 +1,6 @@
 # Use the official Microsoft Ubuntu base image
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
+LABEL org.opencontainers.image.source="https://github.com/TaufiqOdhi/flutter-vscode-dev-container-template"
 
 # Install dependencies, Java 17, and basic tools
 RUN apt update && export DEBIAN_FRONTEND=noninteractive \
